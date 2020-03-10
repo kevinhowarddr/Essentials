@@ -40,6 +40,11 @@ namespace Xamarin.Essentials
         {
             var items = new List<NSObject>();
 
+            if (!string.IsNullOrWhiteSpace(request.Text))
+            {
+                items.Add(new ShareActivityItemSource(new NSString(request.Text), request.Title));
+            }
+
             var fileUrl = NSUrl.FromFilename(request.File.FullPath);
             if (!string.IsNullOrEmpty(request.Title))
                 items.Add(new ShareActivityItemSource(fileUrl, request.Title)); // Share with title (subject)

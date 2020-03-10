@@ -40,8 +40,8 @@ namespace Xamarin.Essentials
         static Task PlatformRequestAsync(ShareFileRequest request)
         {
             var contentUri = Platform.GetShareableFileUri(request.File.FullPath);
-
             var intent = new Intent(Intent.ActionSend);
+
             intent.SetType(request.File.ContentType);
             intent.SetFlags(ActivityFlags.GrantReadUriPermission);
             intent.PutExtra(Intent.ExtraStream, contentUri);
@@ -49,6 +49,11 @@ namespace Xamarin.Essentials
             if (!string.IsNullOrEmpty(request.Title))
             {
                 intent.PutExtra(Intent.ExtraTitle, request.Title);
+            }
+
+            if (!string.IsNullOrEmpty(request.Text))
+            {
+                intent.PutExtra(Intent.ExtraText, request.Text);
             }
 
             var chooserIntent = Intent.CreateChooser(intent, request.Title ?? string.Empty);

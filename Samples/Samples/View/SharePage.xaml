@@ -44,7 +44,10 @@
                 <Label Text="Share File" FontAttributes="Bold" Margin="0,6,0,0" />
 
                 <Label Text="Title (Optional)" />
-                <Entry Text="{Binding ShareFileTitle}" />
+                <Entry Text="{Binding Title}" />
+                
+                <Label Text="Text (Optional)" />
+                <Entry Text="{Binding Text}" />
 
                 <Label Text="File Name:" />
                 <Entry Text="{Binding ShareFileAttachmentName}" />
